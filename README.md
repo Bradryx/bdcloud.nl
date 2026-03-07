@@ -1,5 +1,3 @@
-# bdcloud.nl
-Personal portfolio & cloud blog
 # Astro Starter Kit: Basics
 
 ```sh
