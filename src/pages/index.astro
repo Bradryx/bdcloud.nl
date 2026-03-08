@@ -37,24 +37,29 @@
 
     <!-- HERO -->
     <section class="hero" id="about">
-      <div class="hero-tag">Cloud Architect · Microsoft Solutions</div>
-      <h1>
-        Brandon<br />
-        <span class="name-outline">van Dijk</span>
-      </h1>
-      <p class="hero-sub">
-        Building secure, modern workplaces on Microsoft infrastructure.<br />
-        Endpoint management, identity, compliance, and cloud architecture.
-      </p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn-primary">Get in touch</a>
-        <a href="#focus" class="btn-ghost">See my work ↓</a>
-      </div>
-
-      <!-- Floating badge -->
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Available for projects
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-tag">Cloud Architect · Microsoft Solutions</div>
+          <h1>
+            Brandon<br />
+            <span class="name-outline">van Dijk</span>
+          </h1>
+          <p class="hero-sub">
+            Building secure, modern workplaces on Microsoft infrastructure.<br />
+            Endpoint management, identity, compliance, and cloud architecture.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn-primary">Get in touch</a>
+            <a href="#focus" class="btn-ghost">See my work ↓</a>
+          </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Available for projects
+          </div>
+          <img src="/IMG_7425.jpeg" alt="Brandon van Dijk" class="hero-photo" />
+        </div>
       </div>
     </section>
 
@@ -166,13 +171,13 @@
       <p class="contact-sub">Working on a Microsoft project or looking for a cloud architect? Reach out.</p>
 
       <div class="contact-links">
-        <a href="mailto:contact@bdcloud.nl" class="contact-item">
+        <a href="mailto:brandon@bdcloud.nl" class="contact-item">
           <span class="contact-icon">✉</span>
-          hello@bdcloud.nl
+          brandon@bdcloud.nl
         </a>
-        <a href="https://www.linkedin.com/in/brandon-van-dijk/" target="_blank" class="contact-item">
+        <a href="https://www.linkedin.com/in/brandon-van-dijk/brandon-van-dijk" target="_blank" class="contact-item">
           <span class="contact-icon">in</span>
-          LinkedIn
+          linkedin.com/in/brandon-van-dijk
         </a>
       </div>
     </section>
@@ -320,6 +325,35 @@
     position: relative;
   }
 
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-photo-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .hero-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+  }
+
+  .hero-photo:hover { filter: grayscale(0%); }
+
   .hero-tag {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -390,8 +424,8 @@
 
   .hero-badge {
     position: absolute;
-    top: 7rem;
-    right: 0;
+    top: -1rem;
+    right: -1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -404,6 +438,7 @@
     border-radius: 100px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.7s;
+    white-space: nowrap;
   }
 
   .badge-dot {
@@ -636,7 +671,9 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
-    .hero-badge { display: none; }
+    .hero-content { flex-direction: column-reverse; align-items: flex-start; }
+    .hero-photo { width: 120px; height: 120px; }
+    .hero-badge { top: -0.75rem; right: -0.5rem; font-size: 0.65rem; }
     .nav-links { gap: 1rem; }
     .cert-item { grid-template-columns: 1fr; }
     .cert-date { grid-column: 1; grid-row: 3; }
