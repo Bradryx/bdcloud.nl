@@ -30,7 +30,7 @@
 
     <!-- NAV -->
     <nav>
-      <span class="nav-logo">bd<span class="accent">cloud</span>.nl</span>
+      <span class="nav-logo">bd<span class="accent">cloud</span>.nl<span class="cursor">_</span></span>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#focus">Focus</a></li>
@@ -352,6 +352,17 @@
   }
 
   .nav-logo .accent { color: var(--accent); }
+
+  .cursor {
+    color: var(--accent);
+    animation: blink 1.2s step-end infinite;
+    margin-left: 1px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
 
   .nav-links {
     display: flex;
