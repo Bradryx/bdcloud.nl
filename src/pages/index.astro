@@ -45,8 +45,7 @@
             <span class="name-outline">van Dijk</span>
           </h1>
           <p class="hero-sub">
-            Building secure, modern workplaces on Microsoft infrastructure.<br />
-            Endpoint management, identity, compliance, and cloud architecture.
+            Medior IT professional at a Microsoft Solution Provider, helping hundreds of clients build secure and modern workplaces. Passionate about endpoint management, identity, and information protection.
           </p>
           <div class="hero-cta">
             <a href="#contact" class="btn-primary">Get in touch</a>
@@ -59,6 +58,10 @@
             Available for projects
           </div>
           <img src="/avatar.jpg" alt="Brandon van Dijk" class="hero-photo" />
+          <div class="hero-current">
+            <span class="current-label">// Currently</span>
+            <span>Tenant carve-outs & Purview</span>
+          </div>
         </div>
       </div>
     </section>
@@ -116,50 +119,50 @@
 
       <div class="cert-list">
 
-        <div class="cert-item">
+        <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/7E075F6C80062791?sharingId=13B94C3E4D8FB25" target="_blank">
           <div class="cert-meta">
             <span class="cert-code">MS-102</span>
             <span class="cert-level expert">Expert</span>
           </div>
           <div class="cert-name">Microsoft 365 Administrator Expert</div>
-          <div class="cert-date">Jan 2026</div>
-        </div>
+          <div class="cert-date">Jan 2026 ↗</div>
+        </a>
 
-        <div class="cert-item">
+        <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/2DBD89723A250C0C?sharingId=13B94C3E4D8FB25" target="_blank">
           <div class="cert-meta">
             <span class="cert-code">SC-400</span>
             <span class="cert-level associate">Associate</span>
           </div>
           <div class="cert-name">Information Protection & Compliance Administrator</div>
-          <div class="cert-date">Jul 2025</div>
-        </div>
+          <div class="cert-date">Jul 2025 ↗</div>
+        </a>
 
-        <div class="cert-item">
+        <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/B44EC138C8F73801?sharingId=13B94C3E4D8FB25" target="_blank">
           <div class="cert-meta">
             <span class="cert-code">MD-102</span>
             <span class="cert-level associate">Associate</span>
           </div>
           <div class="cert-name">Endpoint Administrator Associate</div>
-          <div class="cert-date">Aug 2025</div>
-        </div>
+          <div class="cert-date">Aug 2025 ↗</div>
+        </a>
 
-        <div class="cert-item">
+        <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/4214859EFDFEB965?sharingId=13B94C3E4D8FB25" target="_blank">
           <div class="cert-meta">
             <span class="cert-code">AZ-104</span>
             <span class="cert-level associate">Associate</span>
           </div>
           <div class="cert-name">Azure Administrator Associate</div>
-          <div class="cert-date">Mar 2023</div>
-        </div>
+          <div class="cert-date">Mar 2023 ↗</div>
+        </a>
 
-        <div class="cert-item">
+        <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/9F3BB7AADBBF2C57?sharingId=13B94C3E4D8FB25" target="_blank">
           <div class="cert-meta">
             <span class="cert-code">AZ-900</span>
             <span class="cert-level fundamentals">Fundamentals</span>
           </div>
           <div class="cert-name">Azure Fundamentals</div>
-          <div class="cert-date">Jun 2022</div>
-        </div>
+          <div class="cert-date">Jun 2022 ↗</div>
+        </a>
 
       </div>
     </section>
@@ -357,6 +360,23 @@
 
   .hero-photo:hover { filter: grayscale(0%); }
 
+  .hero-current {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--fg-muted);
+    gap: 0.15rem;
+  }
+
+  .current-label {
+    color: var(--accent);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
   .hero-tag {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -547,12 +567,15 @@
     padding: 1.25rem 1.75rem;
     background: var(--bg-card);
     border-bottom: 1px solid var(--border);
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
     gap: 0.25rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
 
   .cert-item:last-child { border-bottom: none; }
-  .cert-item:hover { background: var(--bg-card-hover); }
+  .cert-item:hover { background: var(--bg-card-hover); transform: translateX(3px); }
 
   .cert-meta {
     display: flex;
