@@ -1,259 +1,65 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-const year = new Date().getFullYear();
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog · Brandon van Dijk</title>
-  <meta name="description" content="Technical posts on Microsoft Modern Workplace, Endpoint Management, Azure, and Information Protection." />
-  <link rel="canonical" href="https://bdcloud.nl/blog/" />
-  <meta property="og:title" content="Blog · Brandon van Dijk" />
-  <meta property="og:description" content="Technical posts on Microsoft Modern Workplace, Endpoint Management, Azure, and Information Protection." />
-  <meta property="og:url" content="https://bdcloud.nl/blog/" />
-  <meta property="og:image" content="https://bdcloud.nl/og-image.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-</head>
+<Layout
+  title="Blog · Brandon van Dijk"
+  description="Technical posts on Microsoft Modern Workplace, Endpoint Management, Azure, and Information Protection."
+  canonicalUrl="https://bdcloud.nl/blog/"
+>
+  <section class="blog-header">
+    <div class="section-label">// Blog</div>
+    <h1>Writing</h1>
+    <p class="blog-sub">Technical posts on Microsoft Modern Workplace, endpoint management, Azure, and information protection.</p>
+  </section>
 
-<body>
-  <div class="noise"></div>
-  <div class="grid-bg"></div>
+  <section class="posts">
+    {posts.length === 0 ? (
+      <div class="empty">
+        <span class="empty-icon">// </span>No posts yet. Check back soon.
+      </div>
+    ) : (
+      posts.map(post => (
+        <a href={`/blog/${post.slug}`} class="post-item">
+          <div class="post-meta">
+            <span class="post-date">
+              {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+            </span>
+            {post.data.tags && post.data.tags.map(tag => (
+              <span class="post-tag">{tag}</span>
+            ))}
+          </div>
+          <div class="post-title">{post.data.title}</div>
+          <div class="post-desc">{post.data.description}</div>
+          <span class="post-arrow">→</span>
+        </a>
+      ))
+    )}
+  </section>
+</Layout>
 
-  <main>
-    <nav>
-      <a href="/" class="nav-logo">bd<span class="accent">cloud</span>.nl<span class="cursor">_</span></a>
-      <ul class="nav-links">
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#focus">Focus</a></li>
-        <li><a href="/#certs">Certs</a></li>
-        <li><a href="/#contact">Contact</a></li>
-        <li><a href="/blog" class="active">Blog</a></li>
-      </ul>
-    </nav>
-
-    <section class="blog-header">
-      <div class="section-label">// Blog</div>
-      <h1>Writing</h1>
-      <p class="blog-sub">Technical posts on Microsoft Modern Workplace, endpoint management, Azure, and information protection.</p>
-    </section>
-
-    <section class="posts">
-      {posts.length === 0 ? (
-        <div class="empty">
-          <span class="empty-icon">// </span>No posts yet. Check back soon.
-        </div>
-      ) : (
-        posts.map(post => (
-          <a href={`/blog/${post.slug}`} class="post-item">
-            <div class="post-meta">
-              <span class="post-date">
-                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-              </span>
-              {post.data.tags && post.data.tags.map(tag => (
-                <span class="post-tag">{tag}</span>
-              ))}
-            </div>
-            <div class="post-title">{post.data.title}</div>
-            <div class="post-desc">{post.data.description}</div>
-            <span class="post-arrow">→</span>
-          </a>
-        ))
-      )}
-    </section>
-
-    <footer>
-      <span>© {year} Brandon van Dijk</span>
-      <span class="footer-domain">bdcloud.nl</span>
-    </footer>
-  </main>
-</body>
-</html>
-
-<style is:global>
-  :root {
-    --bg: #f5f4f0;
-    --bg-card: #eeecea;
-    --bg-card-hover: #e6e4df;
-    --fg: #111110;
-    --fg-muted: #5a5955;
-    --accent: #0066ff;
-    --accent-dim: #d0e0ff;
-    --border: rgba(0,0,0,0.08);
-    --font-display: 'Syne', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0e0e0d;
-      --bg-card: #161614;
-      --bg-card-hover: #1e1e1b;
-      --fg: #f0ede8;
-      --fg-muted: #888680;
-      --accent: #4d8fff;
-      --accent-dim: #0a1a33;
-      --border: rgba(255,255,255,0.07);
-    }
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-display);
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  .noise {
-    position: fixed; inset: 0; pointer-events: none; z-index: 100;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-  }
-
-  .grid-bg {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  main {
-    position: relative; z-index: 1;
-    max-width: 900px; margin: 0 auto; padding: 0 2rem;
-  }
-
-  nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 2rem 0; border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: var(--font-mono); font-size: 1rem; font-weight: 500;
-    letter-spacing: -0.02em; color: var(--fg-muted); text-decoration: none;
-  }
-
-  .nav-logo .accent { color: var(--accent); }
-
-  .cursor {
-    color: var(--accent);
-    animation: blink 1.2s step-end infinite;
-    margin-left: 1px;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-
-  .nav-links a {
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted);
-    text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
+<style>
   .blog-header { padding: 5rem 0 3rem; }
-
-  .section-label {
-    font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
-    letter-spacing: 0.08em; margin-bottom: 0.75rem;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
-    letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 1.5rem;
-  }
-
-  .blog-sub {
-    font-size: 1rem; color: var(--fg-muted); max-width: 480px; line-height: 1.7;
-  }
-
-  .posts {
-    display: flex; flex-direction: column;
-    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
-    margin-bottom: 5rem;
-  }
-
-  .post-item {
-    display: grid; grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    padding: 1.5rem 1.75rem; background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    text-decoration: none; color: inherit;
-    transition: background 0.2s, transform 0.2s;
-    gap: 0.4rem 1rem;
-  }
-
+  .section-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 1.5rem; }
+  .blog-sub { font-size: 1rem; color: var(--fg-muted); max-width: 480px; line-height: 1.7; }
+  .posts { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2rem; }
+  .post-item { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto auto; padding: 1.5rem 1.75rem; background: var(--bg-card); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.2s, transform 0.2s; gap: 0.4rem 1rem; }
   .post-item:last-child { border-bottom: none; }
   .post-item:hover { background: var(--bg-card-hover); transform: translateX(3px); }
-
-  .post-meta {
-    display: flex; align-items: center; gap: 0.75rem;
-    grid-column: 1; grid-row: 1;
-  }
-
-  .post-date {
-    font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted);
-  }
-
-  .post-tag {
-    font-family: var(--font-mono); font-size: 0.65rem;
-    background: var(--accent-dim); color: var(--accent);
-    padding: 0.15rem 0.5rem; border-radius: 3px; letter-spacing: 0.03em;
-  }
-
-  .post-title {
-    font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em;
-    grid-column: 1; grid-row: 2;
-  }
-
-  .post-desc {
-    font-size: 0.88rem; color: var(--fg-muted); line-height: 1.6;
-    grid-column: 1; grid-row: 3;
-  }
-
-  .post-arrow {
-    font-size: 1.2rem; color: var(--accent);
-    grid-column: 2; grid-row: 1 / 4;
-    align-self: center;
-  }
-
-  .empty {
-    padding: 3rem 1.75rem; background: var(--bg-card);
-    font-family: var(--font-mono); font-size: 0.9rem; color: var(--fg-muted);
-  }
-
+  .post-meta { display: flex; align-items: center; gap: 0.75rem; grid-column: 1; grid-row: 1; }
+  .post-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
+  .post-tag { font-family: var(--font-mono); font-size: 0.65rem; background: var(--accent-dim); color: var(--accent); padding: 0.15rem 0.5rem; border-radius: 3px; }
+  .post-title { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; grid-column: 1; grid-row: 2; }
+  .post-desc { font-size: 0.88rem; color: var(--fg-muted); line-height: 1.6; grid-column: 1; grid-row: 3; }
+  .post-arrow { font-size: 1.2rem; color: var(--accent); grid-column: 2; grid-row: 1 / 4; align-self: center; }
+  .empty { padding: 3rem 1.75rem; background: var(--bg-card); font-family: var(--font-mono); font-size: 0.9rem; color: var(--fg-muted); }
   .empty-icon { color: var(--accent); }
-
-  footer {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 2rem 0; border-top: 1px solid var(--border);
-    font-family: var(--font-mono); font-size: 0.78rem; color: var(--fg-muted);
-  }
-
-  .footer-domain { color: var(--accent); }
-
   @media (max-width: 600px) {
-    .nav-links { gap: 1rem; }
     .post-item { grid-template-columns: 1fr; }
     .post-arrow { display: none; }
   }

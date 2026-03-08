@@ -1,6 +1,6 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-const year = new Date().getFullYear();
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -14,233 +14,51 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{post.data.title} · Brandon van Dijk</title>
-  <meta name="description" content={post.data.description} />
-  <link rel="canonical" href={`https://bdcloud.nl/blog/${post.slug}`} />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content={post.data.title} />
-  <meta property="og:description" content={post.data.description} />
-  <meta property="og:url" content={`https://bdcloud.nl/blog/${post.slug}`} />
-  <meta property="og:image" content="https://bdcloud.nl/og-image.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-</head>
-
-<body>
-  <div class="noise"></div>
-  <div class="grid-bg"></div>
-
-  <main>
-    <nav>
-      <a href="/" class="nav-logo">bd<span class="accent">cloud</span>.nl<span class="cursor">_</span></a>
-      <ul class="nav-links">
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#focus">Focus</a></li>
-        <li><a href="/#certs">Certs</a></li>
-        <li><a href="/#contact">Contact</a></li>
-        <li><a href="/blog" class="active">Blog</a></li>
-      </ul>
-    </nav>
-
-    <article>
-      <header class="post-header">
-        <a href="/blog" class="back-link">← Back to blog</a>
-        <div class="post-meta">
-          <span class="post-date">
-            {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </span>
-          {post.data.tags && post.data.tags.map(tag => (
-            <span class="post-tag">{tag}</span>
-          ))}
-        </div>
-        <h1>{post.data.title}</h1>
-        <p class="post-desc">{post.data.description}</p>
-      </header>
-
-      <div class="post-content">
-        <Content />
+<Layout
+  title={`${post.data.title} · Brandon van Dijk`}
+  description={post.data.description}
+  canonicalUrl={`https://bdcloud.nl/blog/${post.slug}`}
+  ogType="article"
+>
+  <article>
+    <header class="post-header">
+      <a href="/blog" class="back-link">← Back to blog</a>
+      <div class="post-meta">
+        <span class="post-date">
+          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </span>
+        {post.data.tags && post.data.tags.map(tag => (
+          <span class="post-tag">{tag}</span>
+        ))}
       </div>
-    </article>
+      <h1>{post.data.title}</h1>
+      <p class="post-desc">{post.data.description}</p>
+    </header>
+    <div class="post-content">
+      <Content />
+    </div>
+  </article>
+</Layout>
 
-    <footer>
-      <span>© {year} Brandon van Dijk</span>
-      <span class="footer-domain">bdcloud.nl</span>
-    </footer>
-  </main>
-</body>
-</html>
-
-<style is:global>
-  :root {
-    --bg: #f5f4f0;
-    --bg-card: #eeecea;
-    --fg: #111110;
-    --fg-muted: #5a5955;
-    --accent: #0066ff;
-    --accent-dim: #d0e0ff;
-    --border: rgba(0,0,0,0.08);
-    --font-display: 'Syne', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0e0e0d;
-      --bg-card: #161614;
-      --fg: #f0ede8;
-      --fg-muted: #888680;
-      --accent: #4d8fff;
-      --accent-dim: #0a1a33;
-      --border: rgba(255,255,255,0.07);
-    }
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    background: var(--bg); color: var(--fg);
-    font-family: var(--font-display); line-height: 1.6;
-    min-height: 100vh; overflow-x: hidden;
-  }
-
-  .noise {
-    position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-  }
-
-  .grid-bg {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 2rem; }
-
-  nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 2rem 0; border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: var(--font-mono); font-size: 1rem; font-weight: 500;
-    letter-spacing: -0.02em; color: var(--fg-muted); text-decoration: none;
-  }
-
-  .nav-logo .accent { color: var(--accent); }
-
-  .cursor { color: var(--accent); animation: blink 1.2s step-end infinite; margin-left: 1px; }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-
-  .nav-links a {
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted);
-    text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s;
-  }
-
-  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
+<style>
   article { padding: 4rem 0 5rem; max-width: 680px; }
-
-  .back-link {
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted);
-    text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s;
-    display: inline-block; margin-bottom: 2rem;
-  }
-
+  .back-link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; display: inline-block; margin-bottom: 2rem; }
   .back-link:hover { color: var(--accent); }
-
-  .post-meta {
-    display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
-  }
-
+  .post-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
   .post-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); }
-
-  .post-tag {
-    font-family: var(--font-mono); font-size: 0.65rem;
-    background: var(--accent-dim); color: var(--accent);
-    padding: 0.15rem 0.5rem; border-radius: 3px; letter-spacing: 0.03em;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem;
-  }
-
+  .post-tag { font-family: var(--font-mono); font-size: 0.65rem; background: var(--accent-dim); color: var(--accent); padding: 0.15rem 0.5rem; border-radius: 3px; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
   .post-desc { font-size: 1.05rem; color: var(--fg-muted); line-height: 1.7; margin-bottom: 3rem; }
-
-  /* ── POST CONTENT TYPOGRAPHY ── */
   .post-content { border-top: 1px solid var(--border); padding-top: 2.5rem; }
-
-  .post-content h2 {
-    font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em;
-    margin: 2.5rem 0 1rem; line-height: 1.2;
-  }
-
-  .post-content h3 {
-    font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem;
-  }
-
-  .post-content p { font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--fg); }
-
+  .post-content h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin: 2.5rem 0 1rem; }
+  .post-content h3 { font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+  .post-content p { font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem; }
   .post-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-
-  .post-content ul, .post-content ol {
-    margin: 0 0 1.5rem 1.5rem; line-height: 1.8;
-  }
-
+  .post-content ul, .post-content ol { margin: 0 0 1.5rem 1.5rem; line-height: 1.8; }
   .post-content li { margin-bottom: 0.4rem; font-size: 1rem; }
-
-  .post-content code {
-    font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--bg-card); padding: 0.15rem 0.4rem;
-    border-radius: 3px; border: 1px solid var(--border);
-  }
-
-  .post-content pre {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;
-    overflow-x: auto;
-  }
-
-  .post-content pre code {
-    background: none; border: none; padding: 0;
-    font-size: 0.88rem; line-height: 1.7;
-  }
-
-  .post-content blockquote {
-    border-left: 3px solid var(--accent); padding-left: 1.25rem;
-    margin: 1.5rem 0; color: var(--fg-muted); font-style: italic;
-  }
-
+  .post-content code { font-family: var(--font-mono); font-size: 0.85rem; background: var(--bg-card); padding: 0.15rem 0.4rem; border-radius: 3px; border: 1px solid var(--border); }
+  .post-content pre { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; overflow-x: auto; }
+  .post-content pre code { background: none; border: none; padding: 0; font-size: 0.88rem; line-height: 1.7; }
+  .post-content blockquote { border-left: 3px solid var(--accent); padding-left: 1.25rem; margin: 1.5rem 0; color: var(--fg-muted); font-style: italic; }
   .post-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
-
-  footer {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 2rem 0; border-top: 1px solid var(--border);
-    font-family: var(--font-mono); font-size: 0.78rem; color: var(--fg-muted);
-  }
-
-  .footer-domain { color: var(--accent); }
-
-  @media (max-width: 600px) {
-    .nav-links { gap: 1rem; }
-    article { padding: 3rem 0 4rem; }
-  }
 </style>

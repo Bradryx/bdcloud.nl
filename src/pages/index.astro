@@ -1,244 +1,144 @@
 ---
-// bdcloud.nl - Brandon van Dijk | Cloud Architect Portfolio
-const year = new Date().getFullYear();
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon van Dijk · Cloud Architect</title>
-  <meta name="description" content="Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection." />
-  <link rel="canonical" href="https://bdcloud.nl/" />
+<Layout
+  title="Brandon van Dijk · Cloud Architect"
+  description="Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection."
+  canonicalUrl="https://bdcloud.nl/"
+>
+  <slot name="head" slot="head">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Brandon van Dijk",
+      "url": "https://bdcloud.nl",
+      "jobTitle": "Cloud Architect",
+      "description": "Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection.",
+      "sameAs": [
+        "https://linkedin.com/in/brandon-van-dijk",
+        "https://learn.microsoft.com/en-us/users/brandon-van-dijk/"
+      ]
+    }
+    </script>
+  </slot>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://bdcloud.nl/" />
-  <meta property="og:title" content="Brandon van Dijk · Cloud Architect" />
-  <meta property="og:description" content="Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection." />
-  <meta property="og:image" content="https://bdcloud.nl/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="bdcloud.nl" />
-
-  <!-- Twitter/X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://bdcloud.nl/" />
-  <meta name="twitter:title" content="Brandon van Dijk · Cloud Architect" />
-  <meta name="twitter:description" content="Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection." />
-  <meta name="twitter:image" content="https://bdcloud.nl/og-image.png" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Brandon van Dijk",
-    "url": "https://bdcloud.nl",
-    "jobTitle": "Cloud Architect",
-    "description": "Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection.",
-    "sameAs": [
-      "https://linkedin.com/in/brandon-van-dijk",
-      "https://learn.microsoft.com/en-us/users/brandon-van-dijk/"
-    ]
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-</head>
-
-<body>
-
-  <!-- Noise texture overlay -->
-  <div class="noise"></div>
-
-  <!-- Background grid -->
-  <div class="grid-bg"></div>
-
-  <main>
-
-    <!-- NAV -->
-    <nav>
-      <span class="nav-logo">bd<span class="accent">cloud</span>.nl<span class="cursor">_</span></span>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#focus">Focus</a></li>
-        <li><a href="#certs">Certs</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="/blog">Blog</a></li>
-      </ul>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero" id="about">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-tag">Cloud Architect · Microsoft Solutions</div>
-          <h1>
-            Brandon<br />
-            <span class="name-outline">van Dijk</span>
-          </h1>
-          <p class="hero-sub">
-            Medior IT professional at a Microsoft Solution Provider, helping hundreds of clients build secure and modern workplaces. Passionate about endpoint management, identity, and information protection.
-          </p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn-primary">Get in touch</a>
-            <a href="#focus" class="btn-ghost">See my work ↓</a>
-          </div>
-        </div>
-        <div class="hero-photo-wrap">
-          <div class="hero-badge">
-            <span class="badge-dot"></span>
-            Available for projects
-          </div>
-          <img src="/avatar.jpg" alt="Brandon van Dijk" class="hero-photo" />
-          <div class="hero-current">
-            <span class="current-label">// Currently</span>
-            <span>Tenant carve-outs & Purview</span>
-          </div>
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag">Cloud Architect · Microsoft Solutions</div>
+        <h1>
+          Brandon<br />
+          <span class="name-outline">van Dijk</span>
+        </h1>
+        <p class="hero-sub">
+          IT professional at a Microsoft Solution Provider, helping hundreds of clients build secure and modern workplaces. Passionate about endpoint management, identity, and information protection.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Get in touch</a>
+          <a href="#focus" class="btn-ghost">See my work ↓</a>
         </div>
       </div>
-    </section>
-
-    <!-- FOCUS AREAS -->
-    <section class="section" id="focus">
-      <div class="section-label">// Focus areas</div>
-      <h2 class="section-title">What I work on</h2>
-
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-icon">⬡</div>
-          <h3>Endpoint Management</h3>
-          <p>Securing and automating Windows devices at scale via Microsoft Intune. Compliance policies, app deployment, and autopilot provisioning.</p>
-          <div class="card-tags">
-            <span>Intune</span><span>Entra ID</span><span>Autopilot</span>
-          </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for projects
         </div>
-
-        <div class="card">
-          <div class="card-icon">⬡</div>
-          <h3>Information Protection</h3>
-          <p>Designing data lifecycle management, sensitivity labels, DLP policies, and compliance frameworks through Microsoft Purview.</p>
-          <div class="card-tags">
-            <span>Purview</span><span>DLP</span><span>Compliance</span>
-          </div>
+        <img src="/avatar.jpg" alt="Brandon van Dijk" class="hero-photo" />
+        <div class="hero-current">
+          <span class="current-label">// Currently</span>
+          <span>Tenant carve-outs & Purview</span>
         </div>
-
-        <div class="card">
-          <div class="card-icon">⬡</div>
-          <h3>Cloud Architecture</h3>
-          <p>Tenant design, carve-outs, and migrations on Azure and Microsoft 365. Building resilient, well-governed cloud environments.</p>
-          <div class="card-tags">
-            <span>Azure</span><span>M365</span><span>Governance</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">⬡</div>
-          <h3>Modern Workplace</h3>
-          <p>End-to-end Microsoft 365 implementation for SMB and enterprise. Exchange, SharePoint, Teams, and identity security.</p>
-          <div class="card-tags">
-            <span>Exchange</span><span>SharePoint</span><span>Teams</span>
-          </div>
-        </div>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CERTIFICATIONS -->
-    <section class="section" id="certs">
-      <div class="section-label">// Certifications</div>
-      <h2 class="section-title">Microsoft certified</h2>
-
-      <div class="cert-list">
-
-        <a class="cert-item" href="https://learn.microsoft.com/en-us/users/brandon-van-dijk/" target="_blank">
-          <div class="cert-meta">
-            <span class="cert-code">MS-102</span>
-            <span class="cert-level expert">Expert</span>
-          </div>
-          <div class="cert-name">Microsoft 365 Administrator Expert</div>
-          <div class="cert-date">Jan 2026 ↗</div>
-        </a>
-
-        <a class="cert-item" href="https://learn.microsoft.com/en-us/users/brandon-van-dijk/" target="_blank">
-          <div class="cert-meta">
-            <span class="cert-code">SC-400</span>
-            <span class="cert-level associate">Associate</span>
-          </div>
-          <div class="cert-name">Information Protection & Compliance Administrator</div>
-          <div class="cert-date">Jul 2025 ↗</div>
-        </a>
-
-        <a class="cert-item" href="https://learn.microsoft.com/en-us/users/brandon-van-dijk/" target="_blank">
-          <div class="cert-meta">
-            <span class="cert-code">MD-102</span>
-            <span class="cert-level associate">Associate</span>
-          </div>
-          <div class="cert-name">Endpoint Administrator Associate</div>
-          <div class="cert-date">Aug 2025 ↗</div>
-        </a>
-
-        <a class="cert-item" href="https://learn.microsoft.com/en-us/users/brandon-van-dijk/" target="_blank">
-          <div class="cert-meta">
-            <span class="cert-code">AZ-104</span>
-            <span class="cert-level associate">Associate</span>
-          </div>
-          <div class="cert-name">Azure Administrator Associate</div>
-          <div class="cert-date">Mar 2023 ↗</div>
-        </a>
-
-        <a class="cert-item" href="https://learn.microsoft.com/en-us/users/brandon-van-dijk/" target="_blank">
-          <div class="cert-meta">
-            <span class="cert-code">AZ-900</span>
-            <span class="cert-level fundamentals">Fundamentals</span>
-          </div>
-          <div class="cert-name">Azure Fundamentals</div>
-          <div class="cert-date">Jun 2022 ↗</div>
-        </a>
-
+  <!-- FOCUS AREAS -->
+  <section class="section" id="focus">
+    <div class="section-label">// Focus areas</div>
+    <h2 class="section-title">What I work on</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⬡</div>
+        <h3>Endpoint Management</h3>
+        <p>Securing and automating Windows devices at scale via Microsoft Intune. Compliance policies, app deployment, and autopilot provisioning.</p>
+        <div class="card-tags"><span>Intune</span><span>Entra ID</span><span>Autopilot</span></div>
       </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="section-label">// Contact</div>
-      <h2 class="section-title">Let's connect</h2>
-      <p class="contact-sub">Working on a Microsoft project or looking for a cloud architect? Reach out.</p>
-
-      <div class="contact-links">
-        <a href="mailto:brandon@bdcloud.nl" class="contact-item">
-          <span class="contact-icon">✉</span>
-          brandon@bdcloud.nl
-        </a>
-        <a href="https://linkedin.com/in/brandon-van-dijk" target="_blank" class="contact-item">
-          <span class="contact-icon">in</span>
-          linkedin.com/in/brandon-van-dijk
-        </a>
+      <div class="card">
+        <div class="card-icon">⬡</div>
+        <h3>Information Protection</h3>
+        <p>Designing data lifecycle management, sensitivity labels, DLP policies, and compliance frameworks through Microsoft Purview.</p>
+        <div class="card-tags"><span>Purview</span><span>DLP</span><span>Compliance</span></div>
       </div>
-    </section>
+      <div class="card">
+        <div class="card-icon">⬡</div>
+        <h3>Cloud Architecture</h3>
+        <p>Tenant design, carve-outs, and migrations on Azure and Microsoft 365. Building resilient, well-governed cloud environments.</p>
+        <div class="card-tags"><span>Azure</span><span>M365</span><span>Governance</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⬡</div>
+        <h3>Modern Workplace</h3>
+        <p>End-to-end Microsoft 365 implementation for SMB and enterprise. Exchange, SharePoint, Teams, and identity security.</p>
+        <div class="card-tags"><span>Exchange</span><span>SharePoint</span><span>Teams</span></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <span>© {year} Brandon van Dijk</span>
-      <span class="footer-domain">bdcloud.nl</span>
-    </footer>
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certs">
+    <div class="section-label">// Certifications</div>
+    <h2 class="section-title">Microsoft certified</h2>
+    <div class="cert-list">
+      <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/7E075F6C80062791?sharingId=13B94C3E4D8FB25" target="_blank">
+        <div class="cert-meta"><span class="cert-code">MS-102</span><span class="cert-level expert">Expert</span></div>
+        <div class="cert-name">Microsoft 365 Administrator Expert</div>
+        <div class="cert-date">Jan 2026 ↗</div>
+      </a>
+      <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/2DBD89723A250C0C?sharingId=13B94C3E4D8FB25" target="_blank">
+        <div class="cert-meta"><span class="cert-code">SC-400</span><span class="cert-level associate">Associate</span></div>
+        <div class="cert-name">Information Protection & Compliance Administrator</div>
+        <div class="cert-date">Jul 2025 ↗</div>
+      </a>
+      <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/B44EC138C8F73801?sharingId=13B94C3E4D8FB25" target="_blank">
+        <div class="cert-meta"><span class="cert-code">MD-102</span><span class="cert-level associate">Associate</span></div>
+        <div class="cert-name">Endpoint Administrator Associate</div>
+        <div class="cert-date">Aug 2025 ↗</div>
+      </a>
+      <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/4214859EFDFEB965?sharingId=13B94C3E4D8FB25" target="_blank">
+        <div class="cert-meta"><span class="cert-code">AZ-104</span><span class="cert-level associate">Associate</span></div>
+        <div class="cert-name">Azure Administrator Associate</div>
+        <div class="cert-date">Mar 2023 ↗</div>
+      </a>
+      <a class="cert-item" href="https://learn.microsoft.com/api/credentials/share/en-us/brandon-van-dijk/9F3BB7AADBBF2C57?sharingId=13B94C3E4D8FB25" target="_blank">
+        <div class="cert-meta"><span class="cert-code">AZ-900</span><span class="cert-level fundamentals">Fundamentals</span></div>
+        <div class="cert-name">Azure Fundamentals</div>
+        <div class="cert-date">Jun 2022 ↗</div>
+      </a>
+    </div>
+  </section>
 
-  </main>
-
-</body>
-</html>
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-label">// Contact</div>
+    <h2 class="section-title">Let's connect</h2>
+    <p class="contact-sub">Working on a Microsoft project or looking for a cloud architect? Reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:brandon@bdcloud.nl" class="contact-item">
+        <span class="contact-icon">✉</span>
+        brandon@bdcloud.nl
+      </a>
+      <a href="https://linkedin.com/in/brandon-van-dijk" target="_blank" class="contact-item">
+        <span class="contact-icon">in</span>
+        linkedin.com/in/brandon-van-dijk
+      </a>
+    </div>
+  </section>
+</Layout>
 
 <script>
-  // ── SCROLL ANIMATIONS ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -248,574 +148,86 @@ const year = new Date().getFullYear();
     });
   }, { threshold: 0.1 });
 
-  // Observe section titles and labels
   document.querySelectorAll('.section-title, .section-label').forEach(el => {
     el.classList.add('scroll-fade');
     observer.observe(el);
   });
-
-  // Observe cards with stagger
   document.querySelectorAll('.card').forEach((el, i) => {
     el.classList.add('scroll-fade');
-    el.style.transitionDelay = `${i * 80}ms`;
+    (el as HTMLElement).style.transitionDelay = `${i * 80}ms`;
     observer.observe(el);
   });
-
-  // Observe cert items with stagger
   document.querySelectorAll('.cert-item').forEach((el, i) => {
     el.classList.add('scroll-fade-left');
-    el.style.transitionDelay = `${i * 60}ms`;
+    (el as HTMLElement).style.transitionDelay = `${i * 60}ms`;
     observer.observe(el);
   });
-
-  // Observe contact items with stagger
   document.querySelectorAll('.contact-item').forEach((el, i) => {
     el.classList.add('scroll-fade');
-    el.style.transitionDelay = `${i * 80}ms`;
+    (el as HTMLElement).style.transitionDelay = `${i * 80}ms`;
     observer.observe(el);
   });
-
-  // Observe contact subtitle
   document.querySelectorAll('.contact-sub').forEach(el => {
     el.classList.add('scroll-fade');
     observer.observe(el);
   });
 </script>
 
-<style is:global>
-  /* ── TOKENS ── */
-  :root {
-    --bg: #f5f4f0;
-    --bg-card: #eeecea;
-    --bg-card-hover: #e6e4df;
-    --fg: #111110;
-    --fg-muted: #5a5955;
-    --accent: #0066ff;
-    --accent-dim: #d0e0ff;
-    --border: rgba(0,0,0,0.08);
-    --expert: #0050cc;
-    --associate: #1a7a4a;
-    --fundamentals: #7a5c00;
-    --expert-bg: #dce8ff;
-    --associate-bg: #d4f0e4;
-    --fundamentals-bg: #fef0c0;
-    --font-display: 'Syne', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0e0e0d;
-      --bg-card: #161614;
-      --bg-card-hover: #1e1e1b;
-      --fg: #f0ede8;
-      --fg-muted: #888680;
-      --accent: #4d8fff;
-      --accent-dim: #0a1a33;
-      --border: rgba(255,255,255,0.07);
-      --expert: #6699ff;
-      --associate: #4dbb7a;
-      --fundamentals: #e6b800;
-      --expert-bg: #0d1e3d;
-      --associate-bg: #0d2b1a;
-      --fundamentals-bg: #2a2000;
-    }
-  }
-
-  /* ── RESET ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-display);
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ── TEXTURE & GRID ── */
-  .noise {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-  }
-
-  .grid-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  /* ── LAYOUT ── */
-  main {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  /* ── NAV ── */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0;
-  }
-
-  .nav-logo {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    color: var(--fg-muted);
-  }
-
-  .nav-logo .accent { color: var(--accent); }
-
-  .cursor {
-    color: var(--accent);
-    animation: blink 1.2s step-end infinite;
-    margin-left: 1px;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--fg-muted);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--accent); }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 7rem 0 6rem;
-    position: relative;
-  }
-
-  .hero-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-  }
-
-  .hero-text {
-    flex: 1;
-  }
-
-  .hero-photo-wrap {
-    position: relative;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .hero-photo {
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    display: block;
-    filter: grayscale(20%);
-    transition: filter 0.3s;
-  }
-
+<style>
+  .hero { padding: 7rem 0 6rem; }
+  .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+  .hero-text { flex: 1; }
+  .hero-photo-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; }
+  .hero-photo { width: 220px; height: 220px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); display: block; filter: grayscale(20%); transition: filter 0.3s; }
   .hero-photo:hover { filter: grayscale(0%); }
-
-  .hero-current {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--fg-muted);
-    gap: 0.15rem;
-  }
-
-  .current-label {
-    color: var(--accent);
-    font-size: 0.65rem;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-tag {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards 0.1s;
-  }
-
-  h1 {
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.2s;
-  }
-
-  .name-outline {
-    -webkit-text-stroke: 2px var(--fg);
-    color: transparent;
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: var(--fg-muted);
-    max-width: 480px;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.35s;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.5s;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    padding: 0.75rem 1.75rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
+  .hero-current { display: flex; flex-direction: column; align-items: flex-end; margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--fg-muted); gap: 0.15rem; }
+  .current-label { color: var(--accent); font-size: 0.65rem; letter-spacing: 0.05em; }
+  .hero-tag { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s; }
+  h1 { font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s; }
+  .name-outline { -webkit-text-stroke: 2px var(--fg); color: transparent; }
+  .hero-sub { font-size: 1.05rem; color: var(--fg-muted); max-width: 480px; line-height: 1.7; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.35s; }
+  .hero-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 0.75rem 1.75rem; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s, transform 0.2s; }
   .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-
-  .btn-ghost {
-    color: var(--fg-muted);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    transition: color 0.2s;
-  }
-
+  .btn-ghost { color: var(--fg-muted); text-decoration: none; font-family: var(--font-mono); font-size: 0.85rem; transition: color 0.2s; }
   .btn-ghost:hover { color: var(--fg); }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--fg-muted);
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 0.5rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 0.75rem;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.7s;
-    white-space: nowrap;
-  }
-
-  .badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 8px #22c55e;
-    animation: pulse 2s infinite;
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    padding: 5rem 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 3rem;
-    line-height: 1.1;
-  }
-
-  /* ── CARDS ── */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .card {
-    background: var(--bg-card);
-    padding: 2rem;
-    transition: background 0.2s;
-    position: relative;
-  }
-
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); background: var(--bg-card); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 100px; margin-bottom: 0.75rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.7s; white-space: nowrap; }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
+  .section { padding: 5rem 0; border-top: 1px solid var(--border); }
+  .section-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 3rem; line-height: 1.1; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .card { background: var(--bg-card); padding: 2rem; transition: background 0.2s; }
   .card:hover { background: var(--bg-card-hover); }
-
-  .card-icon {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
-  }
-
-  .card p {
-    font-size: 0.88rem;
-    color: var(--fg-muted);
-    line-height: 1.65;
-    margin-bottom: 1.25rem;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .card-tags span {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    background: var(--accent-dim);
-    color: var(--accent);
-    padding: 0.2rem 0.6rem;
-    border-radius: 3px;
-    letter-spacing: 0.03em;
-  }
-
-  /* ── CERTS ── */
-  .cert-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .cert-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    align-items: center;
-    padding: 1.25rem 1.75rem;
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    transition: background 0.2s, transform 0.2s;
-    gap: 0.25rem 1rem;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-  }
-
+  .card-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem; display: block; }
+  .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .card p { font-size: 0.88rem; color: var(--fg-muted); line-height: 1.65; margin-bottom: 1.25rem; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .card-tags span { font-family: var(--font-mono); font-size: 0.7rem; background: var(--accent-dim); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 3px; }
+  .cert-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .cert-item { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; align-items: center; padding: 1.25rem 1.75rem; background: var(--bg-card); border-bottom: 1px solid var(--border); transition: background 0.2s, transform 0.2s; gap: 0.25rem 1rem; text-decoration: none; color: inherit; }
   .cert-item:last-child { border-bottom: none; }
   .cert-item:hover { background: var(--bg-card-hover); transform: translateX(3px); }
-
-  .cert-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .cert-code {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--fg-muted);
-    letter-spacing: 0.05em;
-  }
-
-  .cert-level {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 3px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
+  .cert-meta { display: flex; align-items: center; gap: 0.75rem; grid-column: 1; grid-row: 1; }
+  .cert-code { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--fg-muted); letter-spacing: 0.05em; }
+  .cert-level { font-family: var(--font-mono); font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 3px; font-weight: 500; text-transform: uppercase; }
   .cert-level.expert { background: var(--expert-bg); color: var(--expert); }
   .cert-level.associate { background: var(--associate-bg); color: var(--associate); }
   .cert-level.fundamentals { background: var(--fundamentals-bg); color: var(--fundamentals); }
-
-  .cert-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    grid-column: 1;
-    grid-row: 2;
-    letter-spacing: -0.01em;
-  }
-
-  .cert-date {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--fg-muted);
-    grid-column: 2;
-    grid-row: 1 / 3;
-    text-align: right;
-  }
-
-  /* ── CONTACT ── */
-  .contact-sub {
-    color: var(--fg-muted);
-    margin-bottom: 2.5rem;
-    max-width: 420px;
-    font-size: 1rem;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    color: var(--fg);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 1.25rem 1.75rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: background 0.2s, transform 0.2s;
-    max-width: 360px;
-  }
-
-  .contact-item:hover {
-    background: var(--bg-card-hover);
-    transform: translateX(4px);
-  }
-
-  .contact-icon {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--accent);
-    width: 1.5rem;
-    text-align: center;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 0;
-    border-top: 1px solid var(--border);
-    margin-top: 2rem;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--fg-muted);
-  }
-
-  .footer-domain { color: var(--accent); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 4px #22c55e; }
-    50%       { box-shadow: 0 0 12px #22c55e; }
-  }
-
-  /* ── RESPONSIVE ── */
+  .cert-name { font-size: 0.95rem; font-weight: 600; grid-column: 1; grid-row: 2; letter-spacing: -0.01em; }
+  .cert-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); grid-column: 2; grid-row: 1 / 3; text-align: right; }
+  .contact-sub { color: var(--fg-muted); margin-bottom: 2.5rem; max-width: 420px; font-size: 1rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--fg); font-size: 1rem; font-weight: 600; padding: 1.25rem 1.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; transition: background 0.2s, transform 0.2s; max-width: 360px; }
+  .contact-item:hover { background: var(--bg-card-hover); transform: translateX(4px); }
+  .contact-icon { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent); width: 1.5rem; text-align: center; }
+  .scroll-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .scroll-fade-left { opacity: 0; transform: translateX(-16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .scroll-fade.visible, .scroll-fade-left.visible { opacity: 1; transform: none; }
   @media (max-width: 600px) {
     .hero-content { flex-direction: column-reverse; align-items: flex-start; }
     .hero-photo { width: 120px; height: 120px; }
-    .hero-badge { top: -0.75rem; right: -0.5rem; font-size: 0.65rem; }
-    .nav-links { gap: 1rem; }
     .cert-item { grid-template-columns: 1fr; }
     .cert-date { grid-column: 1; grid-row: 3; }
   }
-  /* ── SCROLL ANIMATIONS ── */
-  .scroll-fade {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .scroll-fade-left {
-    opacity: 0;
-    transform: translateX(-16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .scroll-fade.visible,
-  .scroll-fade-left.visible {
-    opacity: 1;
-    transform: none;
-  }
-
 </style>
