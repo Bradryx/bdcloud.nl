@@ -1,46 +1,79 @@
-# Astro Starter Kit: Basics
+# bdcloud.nl
 
-```sh
-npm create astro@latest -- --template basics
+Personal portfolio and blog of Brandon van Dijk — Cloud Architect specializing in Microsoft Modern Workplace, Endpoint Management, and Information Protection.
+
+🌐 **Live at [bdcloud.nl](https://bdcloud.nl)**
+
+---
+
+## Tech Stack
+
+- **Framework:** [Astro](https://astro.build/)
+- **Styling:** Custom CSS with CSS variables (dark/light mode via `prefers-color-scheme`)
+- **Content:** Astro Content Collections (Markdown)
+- **Fonts:** Syne + DM Mono via Google Fonts
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Analytics:** Cloudflare Web Analytics
+
+## Project Structure
+
+```
+src/
+├── content/
+│   ├── config.ts         # Content collection schema
+│   └── blog/             # Blog posts (.md files)
+├── layouts/
+│   └── Layout.astro      # Shared layout (nav, footer, global CSS)
+└── pages/
+    ├── index.astro        # Homepage
+    ├── 404.astro          # Custom 404 page
+    └── blog/
+        ├── index.astro    # Blog overview
+        └── [slug].astro   # Individual post
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Local Development
 
-## 🚀 Project Structure
+```bash
+# Install dependencies
+npm install
 
-Inside of your Astro project, you'll see the following folders and files:
+# Start dev server at localhost:4321
+npm run dev
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Writing a Blog Post
 
-## 🧞 Commands
+Create a new `.md` file in `src/content/blog/`:
 
-All commands are run from the root of the project, from a terminal:
+```markdown
+---
+title: "Your Post Title"
+description: "A short description of your post."
+date: 2026-03-08
+tags: ["Intune", "Purview"]
+draft: false
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Your content here...
+```
 
-## 👀 Want to learn more?
+Push to `main` → Cloudflare Pages deploys automatically.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## Certifications
+
+| Exam | Title | Level |
+|---|---|---|
+| MS-102 | Microsoft 365 Administrator Expert | Expert |
+| SC-400 | Information Protection & Compliance Administrator | Associate |
+| MD-102 | Endpoint Administrator Associate | Associate |
+| AZ-104 | Azure Administrator Associate | Associate |
+| AZ-900 | Azure Fundamentals | Fundamentals |
