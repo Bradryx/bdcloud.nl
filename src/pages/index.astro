@@ -224,10 +224,18 @@ import Layout from '../layouts/Layout.astro';
   .scroll-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .scroll-fade-left { opacity: 0; transform: translateX(-16px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .scroll-fade.visible, .scroll-fade-left.visible { opacity: 1; transform: none; }
-  @media (max-width: 600px) {
-    .hero-content { flex-direction: column-reverse; align-items: flex-start; }
-    .hero-photo { width: 120px; height: 120px; }
+  @media (max-width: 640px) {
+    .hero { padding: 3.5rem 0 3rem; }
+    .hero-content { flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
+    .hero-photo { width: 100px; height: 100px; }
+    .hero-photo-wrap { flex-direction: row; align-items: center; gap: 1rem; width: 100%; }
+    .hero-current { margin-top: 0; align-items: flex-start; }
+    .hero-badge { font-size: 0.65rem; padding: 0.4rem 0.75rem; }
+    .section { padding: 3rem 0; }
+    .section-title { margin-bottom: 1.5rem; }
+    .cards { grid-template-columns: 1fr; }
     .cert-item { grid-template-columns: 1fr; }
-    .cert-date { grid-column: 1; grid-row: 3; }
+    .cert-date { grid-column: 1; grid-row: 3; margin-top: 0.25rem; }
+    .contact-item { max-width: 100%; }
   }
 </style>
